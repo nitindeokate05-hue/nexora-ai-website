@@ -7,30 +7,49 @@ export function PrivacyPolicy() {
   return (
     <>
       <SEO
-        description="Nexora AI privacy policy placeholder for project enquiries, booking data, support tickets, and client communication."
+        description="Privacy Policy for Nexora AI, owned and operated by Nexora Global, covering enquiry data, local storage, cookies, and communication."
         title="Privacy Policy | Nexora AI"
       />
       <PremiumHero
         align="center"
-        description="A privacy-first posture for enquiries, demos, booking flows, support requests, and future backend integrations."
+        description="How Nexora AI handles enquiry, booking, consultation, support, and website interaction information."
         eyebrow="Privacy"
-        title="Responsible data handling by design."
+        title="Privacy Policy"
       />
       <section className="container-shell section-spacing">
         <SectionHeader
-          description="Prepared for production legal review and privacy policy finalization."
+          description="Nexora AI and Nexora Global are owned and operated by Nexora Global."
           eyebrow="Compliance"
-          title="Privacy Policy"
+          title="Responsible data handling"
         />
         <Card className="mx-auto max-w-4xl space-y-4 text-sm leading-7 text-muted-foreground" variant="glass">
           <p>
-            Nexora AI collects enquiry, booking, proposal, and support information
-            submitted by users for business communication and project planning.
+            Nexora AI collects information that users voluntarily submit through enquiry
+            forms, consultation bookings, proposal tools, support requests, chatbot
+            flows, email, phone, and WhatsApp communication.
           </p>
           <p>
-            This website currently stores demo form submissions in local browser
-            storage. Production data collection should be connected to a secure backend
-            with retention, deletion, and access controls.
+            This information may include name, email address, phone or WhatsApp number,
+            company name, country, service interest, budget range, timeline, and project
+            requirement details. We use this information to respond to enquiries,
+            understand business requirements, improve services, and support client
+            communication.
+          </p>
+          <p>
+            Some interactive features currently save submitted demo data and preferences
+            in browser localStorage. Cookie consent choices, language preferences, lead
+            forms, chatbot requirements, and local demo records may be stored on the
+            user's device unless cleared by the user.
+          </p>
+          <p>
+            Nexora Global does not sell submitted enquiry information. Data may be
+            processed by trusted service providers only where required for hosting,
+            communication, analytics, security, or service delivery.
+          </p>
+          <p>
+            Users may contact Nexora Global at info@nexoraiglobal.com to request
+            clarification, correction, or deletion of submitted personal information,
+            subject to legal, security, and business record requirements.
           </p>
         </Card>
       </section>

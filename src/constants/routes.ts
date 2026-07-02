@@ -14,7 +14,9 @@ export const ROUTES = {
   support: "/support",
   status: "/status",
   privacyPolicy: "/privacy-policy",
-  termsConditions: "/terms",
+  termsConditions: "/terms-and-conditions",
+  termsLegacy: "/terms",
   cookiePolicy: "/cookie-policy",
+  disclaimer: "/disclaimer",
   gdprNotice: "/gdpr-notice",
 } as const

@@ -15,9 +15,9 @@ export const primaryNavigation = [
 
 export const legalNavigation = [
   { label: "Privacy Policy", href: ROUTES.privacyPolicy },
-  { label: "Terms", href: ROUTES.termsConditions },
+  { label: "Terms & Conditions", href: ROUTES.termsConditions },
   { label: "Cookie Policy", href: ROUTES.cookiePolicy },
-  { label: "GDPR Notice", href: ROUTES.gdprNotice },
+  { label: "Disclaimer", href: ROUTES.disclaimer },
 ] as const
 
 export const utilityNavigation = [
@@ -28,6 +28,4 @@ export const utilityNavigation = [
 
 export const footerNavigation = [
   ...primaryNavigation,
-  ...utilityNavigation,
-  ...legalNavigation,
 ] as const

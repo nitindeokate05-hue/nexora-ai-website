@@ -17,6 +17,7 @@ const preloaders: Partial<Record<string, () => Promise<unknown>>> = {
   [ROUTES.privacyPolicy]: () => import("@/pages/PrivacyPolicy/PrivacyPolicy"),
   [ROUTES.termsConditions]: () => import("@/pages/TermsConditions/TermsConditions"),
   [ROUTES.cookiePolicy]: () => import("@/pages/CookiePolicy/CookiePolicy"),
+  [ROUTES.disclaimer]: () => import("@/pages/Disclaimer/Disclaimer"),
   [ROUTES.gdprNotice]: () => import("@/pages/GdprNotice/GdprNotice"),
 }
 

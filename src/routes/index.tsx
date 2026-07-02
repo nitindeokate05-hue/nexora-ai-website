@@ -13,6 +13,7 @@ const careersPage = lazy(() => import("@/pages/Careers/Careers").then((module) =
 const clientLoginPage = lazy(() => import("@/pages/ClientLogin/ClientLogin").then((module) => ({ default: module.ClientLogin })))
 const contactPage = lazy(() => import("@/pages/Contact/Contact").then((module) => ({ default: module.Contact })))
 const cookiePolicyPage = lazy(() => import("@/pages/CookiePolicy/CookiePolicy").then((module) => ({ default: module.CookiePolicy })))
+const disclaimerPage = lazy(() => import("@/pages/Disclaimer/Disclaimer").then((module) => ({ default: module.Disclaimer })))
 const gdprNoticePage = lazy(() => import("@/pages/GdprNotice/GdprNotice").then((module) => ({ default: module.GdprNotice })))
 const industriesPage = lazy(() => import("@/pages/Industries/Industries").then((module) => ({ default: module.Industries })))
 const notFoundPage = lazy(() => import("@/pages/NotFound/NotFound").then((module) => ({ default: module.NotFound })))
@@ -49,7 +50,9 @@ export function AppRoutes() {
         <Route element={withSuspense(createElement(statusPage))} path={ROUTES.status} />
         <Route element={withSuspense(createElement(privacyPolicyPage))} path={ROUTES.privacyPolicy} />
         <Route element={withSuspense(createElement(termsConditionsPage))} path={ROUTES.termsConditions} />
+        <Route element={withSuspense(createElement(termsConditionsPage))} path={ROUTES.termsLegacy} />
         <Route element={withSuspense(createElement(cookiePolicyPage))} path={ROUTES.cookiePolicy} />
+        <Route element={withSuspense(createElement(disclaimerPage))} path={ROUTES.disclaimer} />
         <Route element={withSuspense(createElement(gdprNoticePage))} path={ROUTES.gdprNotice} />
         <Route element={withSuspense(createElement(notFoundPage))} path="*" />
       </Route>

@@ -10,7 +10,7 @@ import { PageTransition } from "@/components/sections/PageTransition"
 import { Button } from "@/components/ui/button"
 import { PreferenceSelectors } from "@/components/widgets/PreferenceSelectors"
 import { CONTACT } from "@/constants/contact"
-import { footerNavigation, primaryNavigation, utilityNavigation } from "@/constants/navigation"
+import { footerNavigation, legalNavigation, primaryNavigation, utilityNavigation } from "@/constants/navigation"
 import { ROUTES } from "@/constants/routes"
 
 const SiteWidgets = lazy(() =>
@@ -39,7 +39,17 @@ function FooterLinks() {
         ))}
       </nav>
       <nav
-        aria-label="Utility"
+        aria-label="Legal"
+        className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-electric-400 md:justify-end"
+      >
+        {legalNavigation.map((item) => (
+          <Link className="transition-colors hover:text-foreground" key={item.href} to={item.href}>
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+      <nav
+        aria-label="Utility and preferences"
         className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-electric-400 md:justify-end"
       >
         {utilityNavigation.map((item) => (
@@ -63,6 +73,9 @@ function FooterMeta() {
   return (
     <div className="grid gap-3">
       <p>Premium AI automation, software, ERP, analytics, cloud, and IT service architecture for global clients.</p>
+      <p className="text-slate-300">
+        Nexora AI and Nexora Global are owned and operated by Nexora Global.
+      </p>
       <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-300">
         <a className="transition-colors hover:text-electric-300" href={CONTACT.phoneHref}>
           {CONTACT.phoneDisplay}
@@ -79,6 +92,9 @@ function FooterMeta() {
           WhatsApp
         </a>
       </div>
+      <p className="pt-2 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+        © 2026 Nexora Global. All Rights Reserved.
+      </p>
     </div>
   )
 }
