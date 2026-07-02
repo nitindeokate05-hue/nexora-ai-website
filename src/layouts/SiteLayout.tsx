@@ -5,7 +5,7 @@ import { BrandLogo, Button, Footer, Navigation } from "@/components"
 import { AmbientBackground } from "@/components/sections/AmbientBackground"
 import { PageTransition } from "@/components/sections/PageTransition"
 import { PreferenceSelectors } from "@/components/widgets/PreferenceSelectors"
-import { footerNavigation, primaryNavigation, ROUTES, utilityNavigation } from "@/constants"
+import { CONTACT, footerNavigation, primaryNavigation, ROUTES, utilityNavigation } from "@/constants"
 
 const SiteWidgets = lazy(() =>
   import("@/components/widgets").then((module) => ({ default: module.SiteWidgets })),
@@ -53,6 +53,30 @@ function FooterLinks() {
   )
 }
 
+function FooterMeta() {
+  return (
+    <div className="grid gap-3">
+      <p>Premium AI automation, software, ERP, analytics, cloud, and IT service architecture for global clients.</p>
+      <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-300">
+        <a className="transition-colors hover:text-electric-300" href={CONTACT.phoneHref}>
+          {CONTACT.phoneDisplay}
+        </a>
+        <a className="transition-colors hover:text-electric-300" href={CONTACT.emailHref}>
+          {CONTACT.email}
+        </a>
+        <a
+          className="transition-colors hover:text-electric-300"
+          href={CONTACT.whatsappHref}
+          rel="noreferrer"
+          target="_blank"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  )
+}
+
 export function SiteLayout() {
   return (
     <div className="premium-shell flex min-h-svh flex-col">
@@ -81,7 +105,7 @@ export function SiteLayout() {
       </main>
       <Footer
         brand={<BrandLogo imageClassName="h-20 max-w-[7.5rem]" />}
-        meta="Premium AI automation, software, ERP, analytics, cloud, and IT service architecture for global clients."
+        meta={<FooterMeta />}
         navigation={<FooterLinks />}
       />
       <Suspense fallback={null}>

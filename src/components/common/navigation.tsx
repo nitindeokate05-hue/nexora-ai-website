@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react"
 import { NavLink, useLocation } from "react-router-dom"
 
 import { Button } from "@/components/ui/button"
+import { CONTACT } from "@/constants"
 import type { NavItem } from "@/types"
 import { cn } from "@/utils"
 import { BrandLogo } from "./BrandLogo"
@@ -146,6 +147,28 @@ function Navigation({
                       )
                     })}
                   </nav>
+                  <div className="mt-4 grid gap-2 border-t border-white/10 pt-4 text-sm">
+                    <a
+                      className="focus-ring rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 text-slate-200 transition-colors hover:border-electric-400/35 hover:text-foreground"
+                      href={CONTACT.phoneHref}
+                    >
+                      Call {CONTACT.phoneDisplay}
+                    </a>
+                    <a
+                      className="focus-ring rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 text-slate-200 transition-colors hover:border-electric-400/35 hover:text-foreground"
+                      href={CONTACT.emailHref}
+                    >
+                      Email {CONTACT.email}
+                    </a>
+                    <a
+                      className="focus-ring rounded-xl border border-electric-400/25 bg-electric-500/10 px-4 py-3 text-electric-200 transition-colors hover:border-electric-300/45 hover:text-foreground"
+                      href={CONTACT.whatsappHref}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      WhatsApp Nexora AI
+                    </a>
+                  </div>
                 </div>
               ) : null}
             </>

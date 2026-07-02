@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUp, Bot, ChevronDown, Cookie, MessageCircle, Minus, Send, Settings2, ShieldCheck, X } from "lucide-react"
+import { ArrowUp, Bot, ChevronDown, Cookie, Mail, MessageCircle, Minus, Phone, Send, Settings2, ShieldCheck, X } from "lucide-react"
 
 import {
   Button,
@@ -18,11 +18,36 @@ import {
   chatbotServiceOptions,
   chatbotTimelines,
 } from "@/data/mega-menu"
+import { CONTACT } from "@/constants"
 import { savePreference, saveRecord } from "@/utils"
 
 type CookieChoice = "accepted" | "rejected" | "custom"
 
 const cookiePreferenceEvent = "nexora:open-cookie-preferences"
+
+const directContactActions = [
+  {
+    href: CONTACT.phoneHref,
+    icon: Phone,
+    label: "Call Us",
+    value: CONTACT.phoneDisplay,
+    external: false,
+  },
+  {
+    href: CONTACT.emailHref,
+    icon: Mail,
+    label: "Email Us",
+    value: CONTACT.email,
+    external: false,
+  },
+  {
+    href: CONTACT.whatsappHref,
+    icon: MessageCircle,
+    label: "WhatsApp Us",
+    value: "Start chat",
+    external: true,
+  },
+] as const
 
 function resolveQuickOption(option: (typeof chatbotQuickOptions)[number]): (typeof chatbotServiceOptions)[number] {
   if (option === "Talk to Sales") {
@@ -144,7 +169,7 @@ export function SiteWidgets() {
       <a
         aria-label="Contact Nexora AI on WhatsApp"
         className="fixed right-4 bottom-24 z-40 grid size-12 place-items-center rounded-full border border-emerald-300/35 bg-[#075e34] text-white shadow-elevated transition-transform hover:scale-105 hover:bg-[#0b7a43]"
-        href="https://wa.me/10000000000"
+        href={CONTACT.whatsappHref}
         rel="noreferrer"
         target="_blank"
       >
@@ -341,6 +366,29 @@ export function SiteWidgets() {
                     {option}
                   </button>
                 ))}
+              </div>
+
+              <div className="grid gap-2 sm:grid-cols-3">
+                {directContactActions.map((action) => {
+                  const Icon = action.icon
+                  return (
+                    <a
+                      className="focus-ring rounded-2xl border border-electric-400/20 bg-electric-500/10 p-3 text-left transition hover:-translate-y-0.5 hover:border-electric-300/45 hover:bg-electric-500/16 hover:shadow-glow"
+                      href={action.href}
+                      key={action.label}
+                      rel={action.external ? "noreferrer" : undefined}
+                      target={action.external ? "_blank" : undefined}
+                    >
+                      <span className="flex items-center gap-2 text-xs font-semibold text-foreground">
+                        <Icon className="size-4 text-electric-300" />
+                        {action.label}
+                      </span>
+                      <span className="mt-1 block truncate text-[0.72rem] text-muted-foreground">
+                        {action.value}
+                      </span>
+                    </a>
+                  )
+                })}
               </div>
 
               <form className="flex gap-2" onSubmit={submitChatMessage}>
