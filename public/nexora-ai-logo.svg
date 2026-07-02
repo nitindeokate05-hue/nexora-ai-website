@@ -1,0 +1,45 @@
+<svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Nexora AI</title>
+  <desc id="desc">Official Nexora AI logo mark and wordmark.</desc>
+  <defs>
+    <linearGradient id="markGradient" x1="30" y1="132" x2="135" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C8FF"/>
+      <stop offset="0.52" stop-color="#7C3CFF"/>
+      <stop offset="1" stop-color="#D26BFF"/>
+    </linearGradient>
+    <linearGradient id="wordGradient" x1="170" y1="34" x2="573" y2="126" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset="0.48" stop-color="#DDEBFF"/>
+      <stop offset="1" stop-color="#8FEAFF"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.06 0 0 0 0 0.55 0 0 0 0 1 0 0 0 0.42 0"/>
+      <feBlend in="SourceGraphic" mode="screen"/>
+    </filter>
+    <clipPath id="innerCut">
+      <path d="M80 38L126 122H104L80 78L56 122H34L80 38Z"/>
+    </clipPath>
+  </defs>
+  <g filter="url(#glow)">
+    <path d="M80 18C45.759 18 18 45.759 18 80C18 114.241 45.759 142 80 142C114.241 142 142 114.241 142 80C142 45.759 114.241 18 80 18Z" fill="#041024" fill-opacity="0.72"/>
+    <path d="M80 20L137 126H112L80 65L48 126H23L80 20Z" fill="url(#markGradient)"/>
+    <path d="M80 56L109 112H94L80 84L66 112H51L80 56Z" fill="#05101F"/>
+    <g clip-path="url(#innerCut)" opacity="0.5">
+      <path d="M25 111C55 101 82 99 136 105" stroke="#6CE8FF" stroke-width="2"/>
+      <path d="M32 119C66 108 93 110 129 118" stroke="#B277FF" stroke-width="2"/>
+    </g>
+    <circle cx="80" cy="20" r="3" fill="#6CE8FF"/>
+    <circle cx="137" cy="126" r="3" fill="#B277FF"/>
+    <circle cx="23" cy="126" r="3" fill="#00C8FF"/>
+  </g>
+  <g fill="url(#wordGradient)">
+    <path d="M178.4 57H194.2L230.6 104.1V57H247.2V130H232.8L195 81.5V130H178.4V57Z"/>
+    <path d="M265.9 57H321.3V72.1H282.8V86.3H316.7V100.8H282.8V114.9H322.1V130H265.9V57Z"/>
+    <path d="M356.6 92.4L331.8 57H351.5L367.2 80.5L383.2 57H402.2L377.4 92.1L403.8 130H384.2L366.8 104.3L349.4 130H330.3L356.6 92.4Z"/>
+    <path d="M445.8 131.4C423 131.4 405.9 114.7 405.9 93.6V93.4C405.9 72.3 423.3 55.6 446.1 55.6C468.9 55.6 486 72.3 486 93.4V93.6C486 114.7 468.6 131.4 445.8 131.4ZM446.1 115.8C459.2 115.8 468.4 106.1 468.4 93.6V93.4C468.4 80.9 459 71.2 445.8 71.2C432.7 71.2 423.5 80.9 423.5 93.4V93.6C423.5 106.1 432.9 115.8 446.1 115.8Z"/>
+    <path d="M499.6 57H532.7C542 57 549.2 59.6 554 64.4C558.1 68.5 560.3 74.3 560.3 81.3V81.5C560.3 93.3 554 100.8 544.6 104.3L562.5 130H542.8L527.1 106.7H516.5V130H499.6V57ZM531.6 91.8C539.8 91.8 543.9 87.7 543.9 82V81.8C543.9 75.3 539.4 72.1 531.3 72.1H516.5V91.8H531.6Z"/>
+    <path d="M595.1 56.5H610.7L641.9 130H624.2L617.5 113.7H587.1L580.4 130H563.1L595.1 56.5ZM611.7 99L602.4 76.5L593.1 99H611.7Z"/>
+  </g>
+  <text x="178" y="145" fill="#6CE8FF" fill-opacity="0.86" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="0.38em">AI AUTOMATION</text>
+</svg>

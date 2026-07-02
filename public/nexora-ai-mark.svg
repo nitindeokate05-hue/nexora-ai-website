@@ -1,0 +1,27 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Nexora AI Mark</title>
+  <desc id="desc">Nexora AI premium triangular logo mark.</desc>
+  <defs>
+    <linearGradient id="markGradient" x1="30" y1="132" x2="135" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C8FF"/>
+      <stop offset="0.52" stop-color="#7C3CFF"/>
+      <stop offset="1" stop-color="#D26BFF"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.06 0 0 0 0 0.55 0 0 0 0 1 0 0 0 0.42 0"/>
+      <feBlend in="SourceGraphic" mode="screen"/>
+    </filter>
+  </defs>
+  <rect width="160" height="160" rx="36" fill="#020816"/>
+  <g filter="url(#glow)">
+    <path d="M80 18C45.759 18 18 45.759 18 80C18 114.241 45.759 142 80 142C114.241 142 142 114.241 142 80C142 45.759 114.241 18 80 18Z" fill="#041024" fill-opacity="0.78"/>
+    <path d="M80 20L137 126H112L80 65L48 126H23L80 20Z" fill="url(#markGradient)"/>
+    <path d="M80 56L109 112H94L80 84L66 112H51L80 56Z" fill="#05101F"/>
+    <path d="M25 111C55 101 82 99 136 105" stroke="#6CE8FF" stroke-width="2" opacity="0.55"/>
+    <path d="M32 119C66 108 93 110 129 118" stroke="#B277FF" stroke-width="2" opacity="0.48"/>
+    <circle cx="80" cy="20" r="3" fill="#6CE8FF"/>
+    <circle cx="137" cy="126" r="3" fill="#B277FF"/>
+    <circle cx="23" cy="126" r="3" fill="#00C8FF"/>
+  </g>
+</svg>
