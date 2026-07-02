@@ -1,9 +1,12 @@
 import { useState, type FormEvent } from "react"
 import { CalendarCheck } from "lucide-react"
 
-import { Button, Card, CardDescription, CardHeader, CardTitle, Input, Textarea } from "@/components"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { services } from "@/data/site"
-import { saveRecord } from "@/utils"
+import { saveRecord } from "@/utils/storage"
 
 export function BookingForm() {
   const [saved, setSaved] = useState(false)

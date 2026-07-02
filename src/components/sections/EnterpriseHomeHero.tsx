@@ -1,13 +1,18 @@
+import { lazy, Suspense } from "react"
 import { ArrowRight, CalendarDays, Sparkles, Star } from "lucide-react"
 import { Link } from "react-router-dom"
 
 import { Button } from "@/components/ui/button"
-import { EnterpriseDashboardPreview } from "@/components/sections/EnterpriseDashboardPreview"
 import { NeuralBackground } from "@/components/sections/NeuralBackground"
 import { Reveal } from "@/components/sections/Reveal"
-import { ROUTES } from "@/constants"
+import { ROUTES } from "@/constants/routes"
 
 const avatars = ["JD", "AK", "SM", "RL"] as const
+const EnterpriseDashboardPreview = lazy(() =>
+  import("@/components/sections/EnterpriseDashboardPreview").then((module) => ({
+    default: module.EnterpriseDashboardPreview,
+  })),
+)
 
 export function EnterpriseHomeHero() {
   return (
@@ -69,9 +74,28 @@ export function EnterpriseHomeHero() {
           </div>
         </Reveal>
         <Reveal className="lg:-mt-8 xl:-mt-10">
-          <EnterpriseDashboardPreview />
+          <Suspense fallback={<DashboardPreviewSkeleton />}>
+            <EnterpriseDashboardPreview />
+          </Suspense>
         </Reveal>
       </div>
     </section>
+  )
+}
+
+function DashboardPreviewSkeleton() {
+  return (
+    <div className="relative mx-auto min-h-[34rem] w-full max-w-[740px] rounded-[1.75rem] border border-electric-400/25 bg-navy-950/70 p-3 shadow-elevated backdrop-blur-2xl 2xl:max-w-[800px]">
+      <div className="grid h-full min-h-[32rem] place-items-center rounded-[1.35rem] border border-white/10 bg-white/[0.035]">
+        <div className="grid size-16 place-items-center rounded-3xl border border-electric-400/25 bg-electric-500/10">
+          <img
+            alt=""
+            className="h-11 w-auto rounded-xl object-contain"
+            decoding="async"
+            src="/nexora-ai-official-logo-320.png"
+          />
+        </div>
+      </div>
+    </div>
   )
 }

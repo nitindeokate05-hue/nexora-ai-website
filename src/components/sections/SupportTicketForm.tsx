@@ -1,8 +1,11 @@
 import { useState, type FormEvent } from "react"
 import { LifeBuoy } from "lucide-react"
 
-import { Button, Card, CardDescription, CardHeader, CardTitle, Input, Textarea } from "@/components"
-import { saveRecord } from "@/utils"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { saveRecord } from "@/utils/storage"
 
 export function SupportTicketForm() {
   const [saved, setSaved] = useState(false)

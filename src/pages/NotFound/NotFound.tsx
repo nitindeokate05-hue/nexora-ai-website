@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 
-import { Button, Card } from "@/components"
-import { ROUTES } from "@/constants"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ROUTES } from "@/constants/routes"
 import { SEO } from "@/components/seo"
 
 export function NotFound() {

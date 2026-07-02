@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react"
 import { Calculator, Send } from "lucide-react"
 
-import { Button, Card, CardDescription, CardHeader, CardTitle, Input } from "@/components"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { costServiceMultipliers } from "@/data/site"
-import { saveRecord } from "@/utils"
+import { saveRecord } from "@/utils/storage"
 
 const sizes = {
   Startup: 5000,

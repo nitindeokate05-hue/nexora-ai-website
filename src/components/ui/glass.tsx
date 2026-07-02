@@ -2,7 +2,7 @@ import * as React from "react"
 import type { VariantProps } from "class-variance-authority"
 
 import { glassVariants } from "@/components/ui/glass-variants"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 function GlassPanel({
   className,

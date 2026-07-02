@@ -1,4 +1,4 @@
-import { Card } from "@/components"
+import { Card } from "@/components/ui/card"
 import { PremiumHero } from "@/components/sections/PremiumHero"
 import { SectionHeader } from "@/components/sections/SectionHeader"
 import { TechnologyMarquee } from "@/components/sections/TechnologyMarquee"

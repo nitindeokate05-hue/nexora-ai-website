@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 
-import { Button, Card } from "@/components"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/sections/Reveal"
-import { ROUTES } from "@/constants"
+import { ROUTES } from "@/constants/routes"
 
 type LuxuryCTAProps = {
   title?: string

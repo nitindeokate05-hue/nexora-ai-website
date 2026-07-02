@@ -1,17 +1,38 @@
-import { motion, type HTMLMotionProps } from "framer-motion"
+import { useEffect, useRef, type ComponentPropsWithoutRef } from "react"
 
-import { slideUp } from "@/animations"
+import { cn } from "@/utils/cn"
 
-export function Reveal({ children, ...props }: HTMLMotionProps<"div">) {
+export function Reveal({ children, className, ...props }: ComponentPropsWithoutRef<"div">) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element) {
+      return
+    }
+
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      element.dataset.revealed = "true"
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          element.dataset.revealed = "true"
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "0px 0px -80px" },
+    )
+
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <motion.div
-      initial="hidden"
-      variants={slideUp}
-      viewport={{ once: true, margin: "-80px" }}
-      whileInView="visible"
-      {...props}
-    >
+    <div className={cn("reveal-on-scroll", className)} ref={ref} {...props}>
       {children}
-    </motion.div>
+    </div>
   )
 }

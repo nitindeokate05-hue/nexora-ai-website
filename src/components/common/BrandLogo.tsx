@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
-import { ROUTES } from "@/constants"
-import { cn } from "@/utils"
+import { ROUTES } from "@/constants/routes"
+import { cn } from "@/utils/cn"
 
 type BrandLogoProps = {
   compact?: boolean

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import {
   Activity,
   BarChart3,
@@ -31,11 +30,7 @@ const infrastructure = ["Cloud Servers", "Databases", "Storage", "Network"] as c
 
 export function EnterpriseDashboardPreview() {
   return (
-    <motion.div
-      animate={{ y: [0, -7, 0] }}
-      className="relative mx-auto w-full max-w-[740px] 2xl:max-w-[800px]"
-      transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }}
-    >
+    <div className="dashboard-float relative mx-auto w-full max-w-[740px] 2xl:max-w-[800px]">
       <div className="absolute -inset-4 rounded-[2.5rem] bg-[radial-gradient(circle_at_25%_15%,rgb(0_167_255_/_22%),transparent_24rem),radial-gradient(circle_at_80%_30%,rgb(124_60_255_/_24%),transparent_22rem)] blur-2xl" />
       <section className="relative overflow-hidden rounded-[1.75rem] border border-electric-400/35 bg-[#061027]/88 p-3 shadow-[0_28px_100px_rgb(0_0_0_/_56%),0_0_60px_rgb(0_167_255_/_18%),0_0_80px_rgb(124_60_255_/_14%)] backdrop-blur-2xl">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgb(255_255_255_/_9%),transparent_34%,rgb(124_60_255_/_10%))]" />
@@ -58,14 +53,10 @@ export function EnterpriseDashboardPreview() {
           </div>
 
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-6">
-            {kpis.map((item, index) => (
-              <motion.article
+            {kpis.map((item) => (
+              <article
                 className="rounded-2xl border border-white/10 bg-white/[0.055] p-2.5 shadow-card"
-                initial={{ opacity: 0, y: 16 }}
                 key={item.label}
-                viewport={{ once: true }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.04 }}
               >
                 <div className="flex items-center gap-2 text-[0.68rem] text-muted-foreground">
                   <item.icon className="size-3.5 text-electric-400" />
@@ -75,7 +66,7 @@ export function EnterpriseDashboardPreview() {
                 <p className={item.positive ? "mt-1 text-xs text-emerald-300" : "mt-1 text-xs text-rose-300"}>
                   {item.delta}
                 </p>
-              </motion.article>
+              </article>
             ))}
           </div>
 
@@ -144,7 +135,7 @@ export function EnterpriseDashboardPreview() {
           </div>
         </div>
       </section>
-    </motion.div>
+    </div>
   )
 }
 
@@ -177,16 +168,14 @@ function LineChart() {
         <line key={y} stroke="rgba(255,255,255,.08)" x1="0" x2="320" y1={y} y2={y} />
       ))}
       <path d="M0 92 L25 88 L48 54 L70 62 L92 55 L115 72 L140 40 L164 58 L188 50 L212 74 L236 52 L260 57 L285 75 L320 48 L320 130 L0 130 Z" fill="url(#lineFill)" />
-      <motion.path
+      <path
+        className="chart-path"
         d="M0 92 L25 88 L48 54 L70 62 L92 55 L115 72 L140 40 L164 58 L188 50 L212 74 L236 52 L260 57 L285 75 L320 48"
         fill="none"
-        initial={{ pathLength: 0 }}
+        pathLength="1"
         stroke="url(#lineStroke)"
         strokeLinecap="round"
         strokeWidth="3"
-        viewport={{ once: true }}
-        whileInView={{ pathLength: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
       />
     </svg>
   )
@@ -216,16 +205,14 @@ function TrendGraph() {
         <line key={y} stroke="rgba(255,255,255,.08)" x1="0" x2="300" y1={y} y2={y} />
       ))}
       <path d="M0 118 C28 108 34 72 62 66 C93 58 103 90 130 92 C163 94 176 56 204 64 C230 72 238 50 258 45 C278 40 288 60 300 54 L300 150 L0 150 Z" fill="url(#trendFill)" />
-      <motion.path
+      <path
+        className="chart-path"
         d="M0 118 C28 108 34 72 62 66 C93 58 103 90 130 92 C163 94 176 56 204 64 C230 72 238 50 258 45 C278 40 288 60 300 54"
         fill="none"
-        initial={{ pathLength: 0 }}
+        pathLength="1"
         stroke="#8b5cf6"
         strokeLinecap="round"
         strokeWidth="3"
-        viewport={{ once: true }}
-        whileInView={{ pathLength: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
       />
       <circle cx="204" cy="64" fill="#eaf4ff" r="4" />
       <text fill="#c2cee3" fontSize="10" x="212" y="54">320</text>

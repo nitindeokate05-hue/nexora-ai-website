@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import type { ReactNode } from "react"
 
-import { Button } from "@/components"
+import { Button } from "@/components/ui/button"
 import { NeuralBackground } from "@/components/sections/NeuralBackground"
 import { Reveal } from "@/components/sections/Reveal"
-import { ROUTES } from "@/constants"
-import { cn } from "@/utils"
+import { ROUTES } from "@/constants/routes"
+import { cn } from "@/utils/cn"
 
 type PremiumHeroProps = {
   eyebrow: string

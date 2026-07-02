@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 
 import { Button } from "@/components/ui/button"
 import type { NavItem } from "@/types"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 type SidebarProps = React.ComponentProps<"aside"> & {
   items?: readonly NavItem[]

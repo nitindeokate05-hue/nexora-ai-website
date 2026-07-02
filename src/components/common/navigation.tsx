@@ -1,13 +1,17 @@
-import { useEffect, useState, type ComponentProps, type ReactNode } from "react"
+import { lazy, Suspense, useEffect, useState, type ComponentProps, type ReactNode } from "react"
 import { Menu, X } from "lucide-react"
 import { NavLink, useLocation } from "react-router-dom"
 
 import { Button } from "@/components/ui/button"
-import { CONTACT } from "@/constants"
+import { CONTACT } from "@/constants/contact"
+import { preloadRoute } from "@/routes/preload"
 import type { NavItem } from "@/types"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 import { BrandLogo } from "./BrandLogo"
-import { MegaMenu } from "./MegaMenu"
+
+const MegaMenu = lazy(() =>
+  import("./MegaMenu").then((module) => ({ default: module.MegaMenu })),
+)
 
 function isMegaMenuLabel(label: string): label is "Services" | "Solutions" {
   return label === "Services" || label === "Solutions"
@@ -67,6 +71,8 @@ function Navigation({
                     )}
                     key={item.href}
                     onClick={() => openMegaMenu(megaLabel)}
+                    onFocus={() => preloadRoute(item.href)}
+                    onMouseEnter={() => preloadRoute(item.href)}
                     type="button"
                   >
                     {item.label}
@@ -83,6 +89,9 @@ function Navigation({
                     )
                   }
                   key={item.href}
+                  onFocus={() => preloadRoute(item.href)}
+                  onMouseEnter={() => preloadRoute(item.href)}
+                  onTouchStart={() => preloadRoute(item.href)}
                   to={item.href}
                 >
                   {item.label}
@@ -123,6 +132,8 @@ function Navigation({
                             className="focus-ring rounded-xl px-4 py-3 text-left text-sm font-medium text-muted-foreground transition-colors hover:bg-white/8 hover:text-foreground"
                             key={item.href}
                             onClick={() => openMegaMenu(megaLabel)}
+                            onFocus={() => preloadRoute(item.href)}
+                            onMouseEnter={() => preloadRoute(item.href)}
                             type="button"
                           >
                             {item.label}
@@ -140,6 +151,9 @@ function Navigation({
                           }
                           key={item.href}
                           onClick={() => setIsMenuOpen(false)}
+                          onFocus={() => preloadRoute(item.href)}
+                          onMouseEnter={() => preloadRoute(item.href)}
+                          onTouchStart={() => preloadRoute(item.href)}
                           to={item.href}
                         >
                           {item.label}
@@ -175,7 +189,11 @@ function Navigation({
           ) : null}
         </div>
       </div>
-      <MegaMenu onClose={() => setMegaMenu(null)} open={megaMenu !== null} source={megaMenu} />
+      {megaMenu ? (
+        <Suspense fallback={null}>
+          <MegaMenu onClose={() => setMegaMenu(null)} open={megaMenu !== null} source={megaMenu} />
+        </Suspense>
+      ) : null}
     </header>
   )
 }

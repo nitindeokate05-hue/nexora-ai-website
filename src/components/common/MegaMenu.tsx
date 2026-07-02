@@ -4,7 +4,7 @@ import { ArrowRight, Search, X } from "lucide-react"
 import { Link } from "react-router-dom"
 
 import { Button } from "@/components/ui/button"
-import { ROUTES } from "@/constants"
+import { ROUTES } from "@/constants/routes"
 import {
   allMegaServices,
   megaCategories,
@@ -13,7 +13,7 @@ import {
   megaTabs,
   type MegaService,
 } from "@/data/mega-menu"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 type MegaMenuProps = {
   onClose: () => void

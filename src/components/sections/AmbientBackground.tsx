@@ -2,13 +2,24 @@ import { useEffect } from "react"
 
 export function AmbientBackground() {
   useEffect(() => {
+    let frameId = 0
     const updateMouse = (event: PointerEvent) => {
-      document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`)
-      document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`)
+      if (frameId) {
+        return
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`)
+        document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`)
+        frameId = 0
+      })
     }
 
-    window.addEventListener("pointermove", updateMouse)
-    return () => window.removeEventListener("pointermove", updateMouse)
+    window.addEventListener("pointermove", updateMouse, { passive: true })
+    return () => {
+      window.removeEventListener("pointermove", updateMouse)
+      cancelAnimationFrame(frameId)
+    }
   }, [])
 
   return (

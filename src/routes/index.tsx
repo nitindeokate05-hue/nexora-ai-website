@@ -1,9 +1,10 @@
 import { createElement, lazy, Suspense, type ReactNode } from "react"
-import { createBrowserRouter } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 
 import { LoadingScreen } from "@/components/sections/LoadingScreen"
-import { ROUTES } from "@/constants"
+import { ROUTES } from "@/constants/routes"
 import { RootLayout } from "@/layouts"
+import { Home } from "@/pages/Home/Home"
 
 const aboutPage = lazy(() => import("@/pages/About/About").then((module) => ({ default: module.About })))
 const blogPage = lazy(() => import("@/pages/Blog/Blog").then((module) => ({ default: module.Blog })))
@@ -13,7 +14,6 @@ const clientLoginPage = lazy(() => import("@/pages/ClientLogin/ClientLogin").the
 const contactPage = lazy(() => import("@/pages/Contact/Contact").then((module) => ({ default: module.Contact })))
 const cookiePolicyPage = lazy(() => import("@/pages/CookiePolicy/CookiePolicy").then((module) => ({ default: module.CookiePolicy })))
 const gdprNoticePage = lazy(() => import("@/pages/GdprNotice/GdprNotice").then((module) => ({ default: module.GdprNotice })))
-const homePage = lazy(() => import("@/pages/Home/Home").then((module) => ({ default: module.Home })))
 const industriesPage = lazy(() => import("@/pages/Industries/Industries").then((module) => ({ default: module.Industries })))
 const notFoundPage = lazy(() => import("@/pages/NotFound/NotFound").then((module) => ({ default: module.NotFound })))
 const privacyPolicyPage = lazy(() => import("@/pages/PrivacyPolicy/PrivacyPolicy").then((module) => ({ default: module.PrivacyPolicy })))
@@ -26,96 +26,33 @@ const technologiesPage = lazy(() => import("@/pages/Technologies/Technologies").
 const termsConditionsPage = lazy(() => import("@/pages/TermsConditions/TermsConditions").then((module) => ({ default: module.TermsConditions })))
 
 function withSuspense(element: ReactNode) {
-  return (
-    <Suspense
-      fallback={<LoadingScreen />}
-    >
-      {element}
-    </Suspense>
-  )
+  return <Suspense fallback={<LoadingScreen />}>{element}</Suspense>
 }
 
-export const router = createBrowserRouter([
-  {
-    path: ROUTES.home,
-    element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: withSuspense(createElement(homePage)),
-      },
-      {
-        path: ROUTES.services,
-        element: withSuspense(createElement(servicesPage)),
-      },
-      {
-        path: ROUTES.solutions,
-        element: withSuspense(createElement(solutionsPage)),
-      },
-      {
-        path: ROUTES.industries,
-        element: withSuspense(createElement(industriesPage)),
-      },
-      {
-        path: ROUTES.technologies,
-        element: withSuspense(createElement(technologiesPage)),
-      },
-      {
-        path: ROUTES.projects,
-        element: withSuspense(createElement(projectsPage)),
-      },
-      {
-        path: ROUTES.careers,
-        element: withSuspense(createElement(careersPage)),
-      },
-      {
-        path: ROUTES.about,
-        element: withSuspense(createElement(aboutPage)),
-      },
-      {
-        path: ROUTES.blog,
-        element: withSuspense(createElement(blogPage)),
-      },
-      {
-        path: ROUTES.contact,
-        element: withSuspense(createElement(contactPage)),
-      },
-      {
-        path: ROUTES.booking,
-        element: withSuspense(createElement(bookingPage)),
-      },
-      {
-        path: ROUTES.clientLogin,
-        element: withSuspense(createElement(clientLoginPage)),
-      },
-      {
-        path: ROUTES.support,
-        element: withSuspense(createElement(supportPage)),
-      },
-      {
-        path: ROUTES.status,
-        element: withSuspense(createElement(statusPage)),
-      },
-      {
-        path: ROUTES.privacyPolicy,
-        element: withSuspense(createElement(privacyPolicyPage)),
-      },
-      {
-        path: ROUTES.termsConditions,
-        element: withSuspense(createElement(termsConditionsPage)),
-      },
-      {
-        path: ROUTES.cookiePolicy,
-        element: withSuspense(createElement(cookiePolicyPage)),
-      },
-      {
-        path: ROUTES.gdprNotice,
-        element: withSuspense(createElement(gdprNoticePage)),
-      },
-      {
-        path: "*",
-        element: withSuspense(createElement(notFoundPage)),
-      },
-    ],
-  },
-])
+export function AppRoutes() {
+  return (
+    <Routes>
+      <Route element={<RootLayout />} path={ROUTES.home}>
+        <Route index element={<Home />} />
+        <Route element={withSuspense(createElement(servicesPage))} path={ROUTES.services} />
+        <Route element={withSuspense(createElement(solutionsPage))} path={ROUTES.solutions} />
+        <Route element={withSuspense(createElement(industriesPage))} path={ROUTES.industries} />
+        <Route element={withSuspense(createElement(technologiesPage))} path={ROUTES.technologies} />
+        <Route element={withSuspense(createElement(projectsPage))} path={ROUTES.projects} />
+        <Route element={withSuspense(createElement(careersPage))} path={ROUTES.careers} />
+        <Route element={withSuspense(createElement(aboutPage))} path={ROUTES.about} />
+        <Route element={withSuspense(createElement(blogPage))} path={ROUTES.blog} />
+        <Route element={withSuspense(createElement(contactPage))} path={ROUTES.contact} />
+        <Route element={withSuspense(createElement(bookingPage))} path={ROUTES.booking} />
+        <Route element={withSuspense(createElement(clientLoginPage))} path={ROUTES.clientLogin} />
+        <Route element={withSuspense(createElement(supportPage))} path={ROUTES.support} />
+        <Route element={withSuspense(createElement(statusPage))} path={ROUTES.status} />
+        <Route element={withSuspense(createElement(privacyPolicyPage))} path={ROUTES.privacyPolicy} />
+        <Route element={withSuspense(createElement(termsConditionsPage))} path={ROUTES.termsConditions} />
+        <Route element={withSuspense(createElement(cookiePolicyPage))} path={ROUTES.cookiePolicy} />
+        <Route element={withSuspense(createElement(gdprNoticePage))} path={ROUTES.gdprNotice} />
+        <Route element={withSuspense(createElement(notFoundPage))} path="*" />
+      </Route>
+    </Routes>
+  )
+}

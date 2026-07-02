@@ -1,11 +1,12 @@
 import { Mail, MessageCircle, Phone } from "lucide-react"
 
-import { Button, Card, CardDescription, CardHeader, CardTitle } from "@/components"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { BookingForm } from "@/components/sections/BookingForm"
 import { PremiumHero } from "@/components/sections/PremiumHero"
 import { SectionHeader } from "@/components/sections/SectionHeader"
 import { SEO } from "@/components/seo"
-import { CONTACT } from "@/constants"
+import { Button } from "@/components/ui/button"
+import { CONTACT } from "@/constants/contact"
 
 const contactCards = [
   {

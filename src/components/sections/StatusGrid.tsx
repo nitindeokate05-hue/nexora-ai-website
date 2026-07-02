@@ -1,4 +1,4 @@
-import { Card } from "@/components"
+import { Card } from "@/components/ui/card"
 import { statusItems } from "@/data/site"
 
 export function StatusGrid() {

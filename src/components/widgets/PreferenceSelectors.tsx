@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 import { currencies, languages } from "@/data/site"
-import { readPreference, savePreference } from "@/utils"
+import { readPreference, savePreference } from "@/utils/storage"
 
 export function PreferenceSelectors() {
   const [language, setLanguage] = useState<(typeof languages)[number]>("English")

@@ -1,11 +1,17 @@
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
-import { BrandLogo, Button, Footer, Navigation } from "@/components"
+import { BrandLogo } from "@/components/common/BrandLogo"
+import { Footer } from "@/components/common/footer"
+import { Navigation } from "@/components/common/navigation"
 import { AmbientBackground } from "@/components/sections/AmbientBackground"
+import { LazySection } from "@/components/sections/LazySection"
 import { PageTransition } from "@/components/sections/PageTransition"
+import { Button } from "@/components/ui/button"
 import { PreferenceSelectors } from "@/components/widgets/PreferenceSelectors"
-import { CONTACT, footerNavigation, primaryNavigation, ROUTES, utilityNavigation } from "@/constants"
+import { CONTACT } from "@/constants/contact"
+import { footerNavigation, primaryNavigation, utilityNavigation } from "@/constants/navigation"
+import { ROUTES } from "@/constants/routes"
 
 const SiteWidgets = lazy(() =>
   import("@/components/widgets").then((module) => ({ default: module.SiteWidgets })),
@@ -78,6 +84,23 @@ function FooterMeta() {
 }
 
 export function SiteLayout() {
+  const [widgetsReady, setWidgetsReady] = useState(false)
+
+  useEffect(() => {
+    const idleWindow = window as Window & {
+      cancelIdleCallback?: (handle: number) => void
+      requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number
+    }
+
+    if (idleWindow.requestIdleCallback && idleWindow.cancelIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(() => setWidgetsReady(true), { timeout: 20000 })
+      return () => idleWindow.cancelIdleCallback?.(idleId)
+    }
+
+    const timerId = window.setTimeout(() => setWidgetsReady(true), 20000)
+    return () => window.clearTimeout(timerId)
+  }, [])
+
   return (
     <div className="premium-shell flex min-h-svh flex-col">
       <AmbientBackground />
@@ -103,14 +126,18 @@ export function SiteLayout() {
           <Outlet />
         </PageTransition>
       </main>
-      <Footer
-        brand={<BrandLogo imageClassName="h-20 max-w-[7.5rem]" />}
-        meta={<FooterMeta />}
-        navigation={<FooterLinks />}
-      />
-      <Suspense fallback={null}>
-        <SiteWidgets />
-      </Suspense>
+      <LazySection minHeight="30rem" rootMargin="300px">
+        <Footer
+          brand={<BrandLogo imageClassName="h-20 max-w-[7.5rem]" />}
+          meta={<FooterMeta />}
+          navigation={<FooterLinks />}
+        />
+      </LazySection>
+      {widgetsReady ? (
+        <Suspense fallback={null}>
+          <SiteWidgets />
+        </Suspense>
+      ) : null}
     </div>
   )
 }

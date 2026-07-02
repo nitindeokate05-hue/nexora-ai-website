@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/sections/Reveal"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 type SectionHeaderProps = {
   eyebrow?: string

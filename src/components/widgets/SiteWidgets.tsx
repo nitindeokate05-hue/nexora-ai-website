@@ -1,25 +1,18 @@
 import { useEffect, useState, type FormEvent } from "react"
-import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUp, Bot, ChevronDown, Cookie, Mail, MessageCircle, Minus, Phone, Send, Settings2, ShieldCheck, X } from "lucide-react"
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  Input,
-  Textarea,
-} from "@/components"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import {
   chatbotBudgetRanges,
   chatbotQuickOptions,
   chatbotServiceOptions,
   chatbotTimelines,
-} from "@/data/mega-menu"
-import { CONTACT } from "@/constants"
-import { savePreference, saveRecord } from "@/utils"
+} from "@/data/chatbot"
+import { CONTACT } from "@/constants/contact"
+import { savePreference, saveRecord } from "@/utils/storage"
 
 type CookieChoice = "accepted" | "rejected" | "custom"
 
@@ -207,12 +200,9 @@ export function SiteWidgets() {
       ) : null}
 
       {cookieVisible ? (
-        <motion.section
+        <section
           aria-label="Cookie consent"
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-surface fixed bottom-4 left-4 z-50 w-[min(calc(100vw_-_2rem),31rem)] rounded-3xl border-electric-400/25 p-5 shadow-dialog sm:p-6"
-          initial={{ opacity: 0, y: 18 }}
-          transition={{ duration: 0.28, ease: "easeOut" }}
+          className="glass-surface widget-enter fixed bottom-4 left-4 z-50 w-[min(calc(100vw_-_2rem),31rem)] rounded-3xl border-electric-400/25 p-5 shadow-dialog sm:p-6"
         >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
             <div className="grid size-12 shrink-0 place-items-center rounded-2xl border border-electric-400/30 bg-electric-500/12 text-electric-300 shadow-glow">
@@ -246,7 +236,7 @@ export function SiteWidgets() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
       ) : null}
 
       <Dialog open={cookieManageOpen} onOpenChange={setCookieManageOpen}>
@@ -292,15 +282,10 @@ export function SiteWidgets() {
         </DialogContent>
       </Dialog>
 
-      <AnimatePresence>
-        {chatOpen ? (
-          <motion.aside
+      {chatOpen ? (
+          <aside
             aria-label="Nexora AI assistant"
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="fixed right-4 bottom-4 z-50 flex w-[min(calc(100vw_-_2rem),28rem)] max-h-[min(44rem,calc(100svh-2rem))] flex-col overflow-hidden rounded-3xl border border-electric-400/25 bg-navy-950/88 shadow-[0_28px_90px_rgb(0_0_0_/_62%),0_0_60px_rgb(0_167_255_/_18%),0_0_80px_rgb(124_60_255_/_14%)] backdrop-blur-2xl"
-            exit={{ opacity: 0, scale: 0.96, y: 16 }}
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="widget-enter fixed right-4 bottom-4 z-50 flex w-[min(calc(100vw_-_2rem),28rem)] max-h-[min(44rem,calc(100svh-2rem))] flex-col overflow-hidden rounded-3xl border border-electric-400/25 bg-navy-950/88 shadow-[0_28px_90px_rgb(0_0_0_/_62%),0_0_60px_rgb(0_167_255_/_18%),0_0_80px_rgb(124_60_255_/_14%)] backdrop-blur-2xl"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgb(0_167_255_/_18%),transparent_16rem),radial-gradient(circle_at_95%_15%,rgb(124_60_255_/_18%),transparent_18rem)]" />
             <header className="relative flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.045] px-4 py-4">
@@ -474,9 +459,8 @@ export function SiteWidgets() {
                 </p>
               ) : null}
             </div>
-          </motion.aside>
+          </aside>
         ) : null}
-      </AnimatePresence>
 
       <Dialog open={leadOpen} onOpenChange={setLeadOpen}>
         <DialogContent>

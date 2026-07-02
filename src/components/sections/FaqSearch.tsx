@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react"
 import { Search } from "lucide-react"
 
-import { Card } from "@/components"
+import { Card } from "@/components/ui/card"
 import { SectionHeader } from "@/components/sections/SectionHeader"
 import { faqCategories, faqs } from "@/data/site"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 export function FaqSearch() {
   const [query, setQuery] = useState("")

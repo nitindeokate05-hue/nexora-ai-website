@@ -3,7 +3,7 @@ import type { VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { buttonVariants } from "@/components/ui/button-variants"
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 function Button({
   className,

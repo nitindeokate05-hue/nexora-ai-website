@@ -9,7 +9,7 @@ import {
 } from "react-hook-form"
 import { Slot } from "radix-ui"
 
-import { cn } from "@/utils"
+import { cn } from "@/utils/cn"
 
 const Form = FormProvider
 

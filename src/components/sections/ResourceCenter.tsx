@@ -1,6 +1,7 @@
 import { Download } from "lucide-react"
 
-import { Button, Card, CardDescription, CardHeader, CardTitle } from "@/components"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/sections/Reveal"
 import { SectionHeader } from "@/components/sections/SectionHeader"
 import { resources } from "@/data/site"

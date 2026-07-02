@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { Sparkles } from "lucide-react"
 
-import { Button, Card, CardDescription, CardHeader, CardTitle, Textarea } from "@/components"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
 import { industries, services } from "@/data/site"
-import { saveRecord } from "@/utils"
+import { saveRecord } from "@/utils/storage"
 
 export function ProposalGenerator() {
   const [requirement, setRequirement] = useState("")
