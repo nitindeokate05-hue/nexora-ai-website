@@ -53,6 +53,21 @@ npm run preview
 npm run lint
 ```
 
+## Vercel Deployment
+
+The project is ready for Vercel production hosting.
+
+Recommended Vercel settings:
+
+```text
+Framework Preset: Vite
+Install Command: npm install
+Build Command: npm run build
+Output Directory: dist
+```
+
+The same settings are included in `vercel.json`.
+
 ## Stack
 
 - React
